@@ -203,8 +203,8 @@ export default function HomePage() {
               ].map((stat, i) => (
                 <ScrollReveal as="div" variant="scale" delay={(i + 1) as 1|2|3|4} className="stat-item" key={stat.number}>
                   <div className="stat-item__number">{stat.number}</div>
-                  <div className="stat-item__label">{stat.label.split('\n').map((l, i) => <span key={i}>{l}{i === 0 && <br />}</span>)}</div>
-                </div>
+                  <div className="stat-item__label">{stat.label.split('\n').map((l, j) => <span key={j}>{l}{j === 0 && <br />}</span>)}</div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -217,7 +217,7 @@ export default function HomePage() {
               <span className="eyebrow">Our Product Ranges</span>
               <h2 id="products-heading">Precision-Engineered Fillers for Every Indication.</h2>
               <p>Three distinct hyaluronic acid ranges — formulated with varying viscosity and cross-linking densities — to match every anatomical zone and clinical technique.</p>
-            </div>
+            </ScrollReveal>
             <div className="grid-3">
               {[
                 {
@@ -282,7 +282,7 @@ export default function HomePage() {
                     <span style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)' }}>Trade pricing on enquiry</span>
                     <Link href="/contact#enquire" className={`btn ${product.cta} btn--sm`} aria-label={`Enquire about ${product.name} pricing`}>Enquire →</Link>
                   </div>
-                </article>
+                </ScrollReveal>
               ))}
             </div>
             <div style={{ textAlign: 'center', marginTop: 'var(--space-12)' }}>
@@ -298,7 +298,7 @@ export default function HomePage() {
               <span className="eyebrow">How to Start Purchasing</span>
               <h2 id="process-heading">From Enquiry to First Delivery in 4 Simple Steps.</h2>
               <p>We make it straightforward for qualified practitioners and clinics to establish a verified trade account and receive their first order.</p>
-            </div>
+            </ScrollReveal>
             <div className="process-steps">
               {[
                 { n: 1, title: 'Submit Your Enquiry', body: 'Complete the trade enquiry form with your practice details and product interests. Takes under 3 minutes.' },
@@ -365,7 +365,7 @@ export default function HomePage() {
               <span className="eyebrow">What Practitioners Say</span>
               <h2 id="testimonials-heading">Trusted by Clinics Across Two Continents.</h2>
               <p>Hear from the aesthetic professionals who rely on AestheFill Pro for their practice every month.</p>
-            </div>
+            </ScrollReveal>
             <div className="grid-3">
               {[
                 { quote: '"We switched our entire clinic to AestheFill Pro 14 months ago. The documentation package alone has saved my compliance team hours every month. The product consistency across batches is exactly what I expect from a supplier in this category."', name: 'Dr. S. Hartmann', location: 'Aesthetic Medicine Specialist · Munich, Germany' },
@@ -384,7 +384,7 @@ export default function HomePage() {
                       <span>{t.location}</span>
                     </div>
                   </footer>
-                </blockquote>
+                </ScrollReveal>
               ))}
             </div>
           </div>
