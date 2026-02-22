@@ -2,11 +2,18 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Nav() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => {
     setMenuOpen((prev) => {
@@ -35,7 +42,7 @@ export default function Nav() {
       </div>
 
       {/* Main nav */}
-      <nav className="nav" role="navigation" aria-label="Main navigation">
+      <nav className={`nav${scrolled ? ' scrolled' : ''}`} role="navigation" aria-label="Main navigation">
         <div className="nav__inner">
           <Link href="/" className="nav__logo" aria-label="AestheFill Pro — Home">
             <div className="nav__logo-mark" aria-hidden="true">A</div>

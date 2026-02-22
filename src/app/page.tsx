@@ -4,6 +4,7 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import StickyCTA from '@/components/StickyCTA';
 import FAQAccordion from '@/components/FAQAccordion';
+import ScrollReveal from '@/components/ScrollReveal';
 
 export const metadata: Metadata = {
   title: 'Dermal Fillers Wholesale Supplier | CE-Certified Hyaluronic Acid Fillers | USA & Europe',
@@ -110,12 +111,13 @@ export default function HomePage() {
                 >
                   <div className="img-placeholder__label">
                     Hero Product Photography<br />
-                    Suggested: Overhead flat-lay of syringes on clinical white marble with gold accents — 1400×900px WebP
+                    Suggested: Overhead flat-lay of syringes on clean white marble — 1400×900px WebP
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <div className="hero__decor" aria-hidden="true" />
         </section>
 
         {/* ── TRUST BAR ── */}
@@ -198,8 +200,8 @@ export default function HomePage() {
                 { number: '18', label: 'Product SKUs Across\n3 Core HA Ranges' },
                 { number: '100%', label: 'Cold-Chain Compliance\nOn Every Single Shipment' },
                 { number: '48hrs', label: 'Average Dispatch Time\nAfter Order Confirmation' },
-              ].map((stat) => (
-                <div className="stat-item" key={stat.number}>
+              ].map((stat, i) => (
+                <ScrollReveal as="div" variant="scale" delay={(i + 1) as 1|2|3|4} className="stat-item" key={stat.number}>
                   <div className="stat-item__number">{stat.number}</div>
                   <div className="stat-item__label">{stat.label.split('\n').map((l, i) => <span key={i}>{l}{i === 0 && <br />}</span>)}</div>
                 </div>
@@ -211,7 +213,7 @@ export default function HomePage() {
         {/* ── PRODUCTS OVERVIEW ── */}
         <section className="section section--slate" aria-labelledby="products-heading">
           <div className="container">
-            <div className="section-header">
+            <ScrollReveal className="section-header">
               <span className="eyebrow">Our Product Ranges</span>
               <h2 id="products-heading">Precision-Engineered Fillers for Every Indication.</h2>
               <p>Three distinct hyaluronic acid ranges — formulated with varying viscosity and cross-linking densities — to match every anatomical zone and clinical technique.</p>
@@ -249,12 +251,14 @@ export default function HomePage() {
                   cta: 'btn--outline-navy',
                   id: 'deep',
                 },
-              ].map((product) => (
-                <article
+              ].map((product, i) => (
+                <ScrollReveal
                   key={product.id}
+                  as="article"
+                  delay={(i + 1) as 1|2|3}
                   className="product-card"
                   aria-label={`${product.name} product range`}
-                  style={product.featured ? { borderColor: 'rgba(201,168,76,0.40)', boxShadow: '0 0 0 2px rgba(201,168,76,0.15)' } : {}}
+                  style={product.featured ? { borderColor: 'rgba(196,135,154,0.40)', boxShadow: '0 0 0 2px rgba(196,135,154,0.15)' } : {}}
                 >
                   <div className="product-card__image">
                     <div
@@ -290,7 +294,7 @@ export default function HomePage() {
         {/* ── HOW IT WORKS ── */}
         <section className="section section--dark" aria-labelledby="process-heading">
           <div className="container">
-            <div className="section-header section-header--light">
+            <ScrollReveal className="section-header section-header--light">
               <span className="eyebrow">How to Start Purchasing</span>
               <h2 id="process-heading">From Enquiry to First Delivery in 4 Simple Steps.</h2>
               <p>We make it straightforward for qualified practitioners and clinics to establish a verified trade account and receive their first order.</p>
@@ -357,7 +361,7 @@ export default function HomePage() {
         {/* ── TESTIMONIALS ── */}
         <section className="section section--gold-pale" aria-labelledby="testimonials-heading">
           <div className="container">
-            <div className="section-header">
+            <ScrollReveal className="section-header">
               <span className="eyebrow">What Practitioners Say</span>
               <h2 id="testimonials-heading">Trusted by Clinics Across Two Continents.</h2>
               <p>Hear from the aesthetic professionals who rely on AestheFill Pro for their practice every month.</p>
@@ -367,8 +371,8 @@ export default function HomePage() {
                 { quote: '"We switched our entire clinic to AestheFill Pro 14 months ago. The documentation package alone has saved my compliance team hours every month. The product consistency across batches is exactly what I expect from a supplier in this category."', name: 'Dr. S. Hartmann', location: 'Aesthetic Medicine Specialist · Munich, Germany' },
                 { quote: '"The cold-chain records that come with every shipment have become part of our patient file documentation. That level of traceability is rare. My patients notice the quality difference, and it gives me confidence in every treatment."', name: 'Dr. C. Moreau', location: 'Cosmetic Dermatologist · Paris, France' },
                 { quote: '"Running a busy MedSpa in Miami means I cannot afford supply disruptions. My account manager knows our ordering cadence and we haven\'t had a stock-out since we moved to AestheFill Pro. The US import process was also completely handled on their end."', name: 'Dr. A. Reyes, MD', location: 'MedSpa Director · Miami, FL, USA' },
-              ].map((t) => (
-                <blockquote className="testimonial-card" key={t.name} aria-label={`Testimonial from ${t.name}`}>
+              ].map((t, i) => (
+                <ScrollReveal as="blockquote" delay={(i + 1) as 1|2|3} className="testimonial-card" key={t.name} aria-label={`Testimonial from ${t.name}`}>
                   <div className="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
                   <p className="testimonial-card__quote">{t.quote}</p>
                   <footer className="testimonial-card__author">
@@ -445,7 +449,7 @@ export default function HomePage() {
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-4)', flexWrap: 'wrap', marginBottom: 'var(--space-8)' }}>
               <Link href="/contact#enquire" className="btn btn--primary btn--lg">Enquire to Purchase →</Link>
-              <Link href="/products" className="btn btn--secondary btn--lg">Browse Products First</Link>
+              <Link href="/products" className="btn btn--secondary-white btn--lg">Browse Products First</Link>
             </div>
             <p style={{ fontSize: 'var(--text-sm)', color: 'rgba(255,255,255,0.45)' }}>For licensed practitioners and registered clinics only. Professional credentials required.</p>
           </div>
