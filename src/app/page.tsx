@@ -447,7 +447,7 @@ export default function HomePage() {
             <p style={{ color: 'rgba(255,255,255,0.70)', fontSize: 'var(--text-xl)', maxWidth: 560, marginInline: 'auto', marginBottom: 'var(--space-8)' }}>
               Submit your trade enquiry today. Licence verification within 1 business day. Your account manager will contact you with pricing within 24 hours.
             </p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-4)', flexWrap: 'wrap', marginBottom: 'var(--space-8)' }}>
+            <div className="btn-group" style={{ marginBottom: 'var(--space-8)' }}>
               <Link href="/contact#enquire" className="btn btn--primary btn--lg">Enquire to Purchase →</Link>
               <Link href="/products" className="btn btn--secondary-white btn--lg">Browse Products First</Link>
             </div>
