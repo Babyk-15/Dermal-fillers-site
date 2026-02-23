@@ -26,7 +26,6 @@ export const ALL_BRANDS = [
 
 export const ALL_CATEGORIES = [
   'All',
-  'Dermal Fillers',
   'Lips',
   'Skinboosters',
   'Collagen Stimulators',
