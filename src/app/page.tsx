@@ -169,9 +169,9 @@ export default function HomePage() {
         </section>
 
         {/* ── PROOF STRIP ── */}
-        <section className="section--sm" style={{ background: 'var(--color-white)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
+        <section className="section--sm proof-strip" style={{ background: 'var(--color-white)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
           <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--space-6)', textAlign: 'center' }}>
+            <div className="proof-strip__grid" style={{ gap: 'var(--space-6)', textAlign: 'center' }}>
               {[
                 { icon: '🛡️', title: 'CE Certified', sub: 'EU MDR 2017/745 on every product' },
                 { icon: '🌡️', title: 'Cold-Chain Guaranteed', sub: '2–8 °C from warehouse to your door' },

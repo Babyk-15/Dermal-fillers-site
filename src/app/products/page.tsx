@@ -9,7 +9,6 @@ import StickyCTA from '@/components/StickyCTA';
 import { products, ALL_CATEGORIES, getBrands, type Product } from '@/lib/products';
 
 const BRANDS = getBrands();
-const SIDEBAR_CATEGORIES = ALL_CATEGORIES.filter((c) => c !== 'All');
 
 export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState<string>('All');
@@ -36,7 +35,7 @@ export default function ProductsPage() {
       <Nav />
       <main id="main-content">
 
-        {/* PAGE HERO */}
+        {/* PAGE HERO — compact */}
         <section className="page-hero" aria-labelledby="page-heading">
           <div className="container">
             <nav className="breadcrumb" aria-label="Breadcrumb">
@@ -49,112 +48,80 @@ export default function ProductsPage() {
           </div>
         </section>
 
-        {/* LAYOUT: Sidebar + Main */}
+        {/* FILTER BAR — search + dropdowns */}
         <section className="section--sm" style={{ background: 'var(--color-cream)', paddingTop: 0 }}>
-          <div className="container" style={{ maxWidth: 1400 }}>
-            <div className="products-layout">
-
-              {/* SIDEBAR — Categories */}
-              <aside className="products-sidebar" role="complementary" aria-label="Filter by category">
-                <div className="products-sidebar__section">
-                  <h3 className="products-sidebar__title">Category</h3>
-                  <nav className="products-sidebar__list" aria-label="Product categories">
-                    <button
-                      className={`products-sidebar__item${activeCategory === 'All' ? ' is-active' : ''}`}
-                      onClick={() => setActiveCategory('All')}
-                      aria-pressed={activeCategory === 'All'}
-                    >
-                      All Products
-                    </button>
-                    {SIDEBAR_CATEGORIES.map((cat) => (
-                      <button
-                        key={cat}
-                        className={`products-sidebar__item${activeCategory === cat ? ' is-active' : ''}`}
-                        onClick={() => setActiveCategory(cat)}
-                        aria-pressed={activeCategory === cat}
-                      >
-                        {cat}
-                      </button>
-                    ))}
-                  </nav>
-                </div>
-              </aside>
-
-              {/* MAIN — Search, brands, grid */}
-              <div className="products-main">
-                <div style={{ marginBottom: 'var(--space-6)' }}>
-                  <input
-                    className="form-input"
-                    type="search"
-                    placeholder="Search products, brands, or treatment areas…"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    aria-label="Search products"
-                    style={{ maxWidth: 420, fontSize: '0.9375rem', transition: 'border-color 0.2s, box-shadow 0.2s' }}
-                  />
-                </div>
-
-                {/* Brand filters */}
-                <div
-                  style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap', alignItems: 'center', marginBottom: 'var(--space-6)' }}
-                  role="group"
-                  aria-label="Filter by brand"
-                >
-                  <span
-                    style={{
-                      fontSize: 'var(--text-xs)',
-                      color: 'var(--color-text-muted)',
-                      fontWeight: 600,
-                      letterSpacing: '0.06em',
-                      textTransform: 'uppercase',
-                      flexShrink: 0,
-                    }}
-                  >
-                    Brand:
-                  </span>
-                  <FilterPill label="All" active={activeBrand === 'All'} onClick={() => setActiveBrand('All')} />
-                  {BRANDS.map((b) => (
-                    <FilterPill key={b} label={b} active={activeBrand === b} onClick={() => setActiveBrand(b)} />
-                  ))}
-                </div>
-
-                <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}>
-                  <strong style={{ color: 'var(--color-plum)' }}>{filtered.length}</strong> product{filtered.length !== 1 && 's'}
-                  {activeCategory !== 'All' && ` · ${activeCategory}`}
-                  {activeBrand !== 'All' && ` · ${activeBrand}`}
-                </p>
-
-                {filtered.length === 0 ? (
-                  <div style={{ textAlign: 'center', padding: 'var(--space-20) 0' }}>
-                    <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-5)' }}>
-                      No products match your filters.
-                    </p>
-                    <button
-                      onClick={() => {
-                        setActiveCategory('All');
-                        setActiveBrand('All');
-                        setSearch('');
-                      }}
-                      className="btn btn--outline-navy"
-                    >
-                      Clear filters
-                    </button>
-                  </div>
-                ) : (
-                  <div className="grid-3" style={{ gap: 'var(--space-5)' }}>
-                    {filtered.map((p, idx) => (
-                      <ProductCard
-                        key={p.id}
-                        product={p}
-                        expanded={expandedId === p.id}
-                        onToggle={() => setExpandedId(expandedId === p.id ? null : p.id)}
-                        animate
-                      />
-                    ))}
-                  </div>
-                )}
-              </div>
+          <div className="container">
+            <div className="products-filter-bar">
+              <input
+                className="form-input products-filter-bar__search"
+                type="search"
+                placeholder="Search products…"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                aria-label="Search products"
+              />
+              <select
+                className="form-select products-filter-bar__select"
+                value={activeCategory}
+                onChange={(e) => setActiveCategory(e.target.value)}
+                aria-label="Filter by category"
+              >
+                {ALL_CATEGORIES.map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat === 'All' ? 'All Categories' : cat}
+                  </option>
+                ))}
+              </select>
+              <select
+                className="form-select products-filter-bar__select"
+                value={activeBrand}
+                onChange={(e) => setActiveBrand(e.target.value)}
+                aria-label="Filter by brand"
+              >
+                <option value="All">All Brands</option>
+                {BRANDS.map((b) => (
+                  <option key={b} value={b}>
+                    {b}
+                  </option>
+                ))}
+              </select>
             </div>
+
+            <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}>
+              <strong style={{ color: 'var(--color-plum)' }}>{filtered.length}</strong> product{filtered.length !== 1 && 's'}
+              {activeCategory !== 'All' && ` · ${activeCategory}`}
+              {activeBrand !== 'All' && ` · ${activeBrand}`}
+            </p>
+
+            {filtered.length === 0 ? (
+              <div style={{ textAlign: 'center', padding: 'var(--space-16) 0' }}>
+                <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-5)' }}>
+                  No products match your filters.
+                </p>
+                <button
+                  onClick={() => {
+                    setActiveCategory('All');
+                    setActiveBrand('All');
+                    setSearch('');
+                  }}
+                  className="btn btn--outline-navy"
+                >
+                  Clear filters
+                </button>
+              </div>
+            ) : (
+              <div className="grid-3" style={{ gap: 'var(--space-5)' }}>
+                {filtered.map((p) => (
+                  <ProductCard
+                    key={p.id}
+                    product={p}
+                    expanded={expandedId === p.id}
+                    onToggle={() => setExpandedId(expandedId === p.id ? null : p.id)}
+                    animate
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
@@ -191,31 +158,6 @@ export default function ProductsPage() {
       <Footer />
       <StickyCTA />
     </>
-  );
-}
-
-function FilterPill({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
-  return (
-    <button
-      onClick={onClick}
-      className="filter-pill"
-      style={{
-        padding: '6px 14px',
-        borderRadius: 'var(--radius-pill)',
-        border: `1.5px solid ${active ? 'var(--color-champagne)' : 'var(--color-border)'}`,
-        fontSize: 'var(--text-xs)',
-        fontWeight: 600,
-        cursor: 'pointer',
-        transition: 'all 0.22s cubic-bezier(0.22, 1, 0.36, 1)',
-        background: active ? 'var(--color-champagne-pale)' : 'var(--color-white)',
-        color: active ? 'var(--color-champagne)' : 'var(--color-slate-700)',
-        whiteSpace: 'nowrap',
-        boxShadow: active ? '0 2px 8px rgba(201,164,108,0.18)' : 'none',
-      }}
-      aria-pressed={active}
-    >
-      {label}
-    </button>
   );
 }
 

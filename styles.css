@@ -16,9 +16,12 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
+  overflow-x: hidden;
+  min-width: 0;
   font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.7;
@@ -42,6 +45,10 @@ a {
 ul { list-style: none; }
 
 button { cursor: pointer; }
+
+main { overflow-x: hidden; }
+
+.container { min-width: 0; }
 
 /* ── 2. DESIGN TOKENS ── */
 :root {
@@ -321,6 +328,9 @@ p.lead {
   right: 0;
   z-index: 100;
   height: var(--nav-height);
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -336,6 +346,7 @@ p.lead {
 .nav__inner {
   height: 100%;
   max-width: var(--max-width);
+  min-width: 0;
   margin-inline: auto;
   padding-inline: var(--space-5);
   display: flex;
@@ -410,6 +421,8 @@ p.lead {
   background: linear-gradient(90deg, var(--color-plum-mid), var(--color-plum));
   border-bottom: 1px solid rgba(196, 135, 154, 0.20);
   padding-block: 8px;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
   padding-inline: var(--space-4);
   text-align: center;
   font-size: 0.65rem;
