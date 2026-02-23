@@ -10,7 +10,7 @@ import { products } from '@/lib/products';
 export const metadata: Metadata = {
   title: 'Dermal Fillers Wholesale Supplier | CE-Certified | USA & Europe',
   description:
-    'Licensed wholesale supplier of CE-certified dermal fillers. 50 products from top brands. Trade pricing for licensed practitioners in the USA and Europe.',
+    'Licensed wholesale supplier of CE-certified dermal fillers from top brands. Trade pricing for licensed practitioners in the USA and Europe.',
   alternates: { canonical: 'https://www.yourdomain.com/' },
   openGraph: {
     title: 'Dermal Fillers Wholesale Supplier | CE-Certified | USA & Europe',
@@ -46,7 +46,7 @@ export default function HomePage() {
                   <em>Verified</em> Supply.
                 </h1>
                 <p className="hero__subheadline">
-                  50 CE-certified products from the world&apos;s top brands — supplied wholesale to licensed practitioners across the USA and Europe.
+                  CE-certified products from the world&apos;s top brands — supplied wholesale to licensed practitioners across the USA and Europe.
                 </p>
                 <div className="hero__cta-group">
                   <Link href="/contact#enquire" className="btn btn--primary btn--lg">
@@ -98,7 +98,7 @@ export default function HomePage() {
             <div className="stats-row">
               {[
                 { number: '1,200+', label: 'Licensed Clinics' },
-                { number: '50',     label: 'CE-Certified Products' },
+                { number: '25+',   label: 'Trusted Brands' },
                 { number: '100%',   label: 'Cold-Chain Compliance' },
                 { number: '48hrs',  label: 'Average Dispatch' },
               ].map((s, i) => (
@@ -162,7 +162,7 @@ export default function HomePage() {
 
             <div style={{ textAlign: 'center', marginTop: 'var(--space-10)' }}>
               <Link href="/products" className="btn btn--outline-navy btn--lg">
-                Browse All 50 Products →
+                Browse All Products →
               </Link>
             </div>
           </div>

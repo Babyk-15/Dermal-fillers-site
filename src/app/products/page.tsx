@@ -44,7 +44,6 @@ export default function ProductsPage() {
               <span aria-current="page">Products</span>
             </nav>
             <h1 id="page-heading">Product Catalogue</h1>
-            <p>50 CE-certified products. Top brands. Trade pricing for verified accounts.</p>
           </div>
         </section>
 
