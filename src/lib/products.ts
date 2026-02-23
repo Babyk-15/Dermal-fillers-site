@@ -877,5 +877,9 @@ export function getProductsByBrand(brand: string): Product[] {
 }
 
 export function getBrands(): string[] {
-  return [...new Set(products.map((p) => p.brand))].sort();
+  const seen: Record<string, boolean> = {};
+  return products
+    .map((p) => p.brand)
+    .filter((b) => { if (seen[b]) return false; seen[b] = true; return true; })
+    .sort();
 }
